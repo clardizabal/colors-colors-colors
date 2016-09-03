@@ -47,20 +47,16 @@ table {
   border-spacing: 0;
 }
 
-body {
+/*body {
   background-color: aliceblue;
-}
-tr {
-  /*height: 50px;*/
-  padding: 0px;
-}
+}*/
 .square {
   display: inline-block;
-  /*outline: 1px solid black;*/
-  /*background: cyan;*/
+  outline: 1px dotted black;
   height: 50px;
   width: 50px;
   text-align: center;
+  transition: background 2s;
 }
 .colorText {
   color: white;
@@ -71,6 +67,7 @@ tr {
   font-weight: bold;
   visibility: hidden;
 }
+
 .square:hover .colorText{
   visibility: visible;
 }
