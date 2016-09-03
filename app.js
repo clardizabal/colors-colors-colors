@@ -7,26 +7,27 @@ class Square extends React.Component {
     this.state = {
       /* Generate a randome color from list of colors */
       color: colors[Math.floor(Math.random() * colors.length)],
-      textColor: 'white',
     };
 
     this.changeColor = this.changeColor.bind(this);
   }
 
-
   changeColor() {
+    /* Find index of current color in sequence */
     let index = colors.indexOf(this.state.color);
+    /* Get index of next color in seqequence and change state */
     index = index < colors.length - 1 ? index + 1 : 0;
     this.setState({color: colors[index]});
   }
 
   render() {
-    /* Inline styling */
+    /* Inline styling for Square and Text */
     const squareStyle = {
       background: this.state.color,
     }
     const textStyle = {
-      color: this.state.color === 'yellow' ? 'black' : 'white',
+      color: (this.state.color === 'yellow' ||
+        this.state.color === 'cyan') ? 'black' : 'white',
     }
 
     return (
@@ -54,21 +55,30 @@ const TableRow = () => (
   </tr>
 );
 
+const Header = () => (
+  <div id='header'>
+    <div id='title'>Colors, colors, colors...</div>
+  </div>
+)
+
 const App = () => (
-    <table>
-      <tbody>
-        <TableRow/>
-        <TableRow/>
-        <TableRow/>
-        <TableRow/>
-        <TableRow/>
-        <TableRow/>
-        <TableRow/>
-        <TableRow/>
-        <TableRow/>
-        <TableRow/>
-      </tbody>
-   </table>
+    <div>
+      <Header/>
+      <table>
+        <tbody>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+          <TableRow/>
+        </tbody>
+     </table>
+   </div>
 );
 
 ReactDOM.render(<App />, document.getElementById('app'));

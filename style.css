@@ -47,27 +47,40 @@ table {
   border-spacing: 0;
 }
 
-/*body {
-  background-color: aliceblue;
-}*/
+body {
+  font-family: Poppins;
+  background-color: #262626;
+}
+#header {
+  height: 120px;
+  color: #CCC;
+  background: linear-gradient(#222, #111);
+  /*background-color: #0fdeaf;*/
+}
+#title {
+  display: inline-block;
+  line-height: 120px;
+  font-size: 30px;
+  font-style: bold;
+  vertical-align: middle;
+}
 .square {
   display: inline-block;
-  outline: 1px dotted black;
+  outline: 2px groove #595959;
   height: 50px;
   width: 50px;
   text-align: center;
-  transition: background 2s;
+  transition: background 2.5s;
 }
 .colorText {
-  color: white;
+  color: ;
   display: inline-block;
   vertical-align: middle;
   line-height: 50px;
-  font-size: 13px;
+  font-size: 10px;
   font-weight: bold;
   visibility: hidden;
 }
-
 .square:hover .colorText{
   visibility: visible;
 }
