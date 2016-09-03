@@ -57,7 +57,7 @@ tr {
 .square {
   display: inline-block;
   /*outline: 1px solid black;*/
-  background: cyan;
+  /*background: cyan;*/
   height: 50px;
   width: 50px;
   text-align: center;
@@ -67,7 +67,8 @@ tr {
   display: inline-block;
   vertical-align: middle;
   line-height: 50px;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: bold;
   visibility: hidden;
 }
 .square:hover .colorText{
