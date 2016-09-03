@@ -1,0 +1,28 @@
+body {
+  background-color: aliceblue;
+}
+img {
+  border-radius: 50px;
+  height: 240px;
+  width: 240px;
+}
+.square {
+  display: inline-block;
+  outline: 1px solid black;
+  background: cyan;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+}
+.colorText {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 50px;
+}
+.fish-name {
+  padding: 0px 50px;
+  font: italic bold 24px serif;
+}
+.fish-description {
+  padding: 0px 50px;
+}
