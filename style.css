@@ -46,31 +46,53 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+/* END OF CSS RESET */
 
+html, body {
+  height: 100%;
+}
 body {
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
   background-color: #262626;
+  min-width: 500px;
+  min-height: 500px;
+}
+#app {
+  min-height: 100%;
+  /* margin bottom should be same size as footer */
+  margin-bottom: -180px;
+}
+#app:after {
+  content: "";
+  display: block;
 }
 #header {
-  height: 120px;
-  color: #CCC;
-  background: linear-gradient(#222, #111);
-  /*background-color: #0fdeaf;*/
+  height: 60px;
+  background: linear-gradient(#282828, #191919);
 }
 #title {
+  color: #CCC;
   display: inline-block;
-  line-height: 120px;
-  font-size: 30px;
-  font-style: bold;
+  line-height: 60px;
+  font-size: 20px;
+  font-weight: 100;
   vertical-align: middle;
+  margin-left: 30px;
+}
+.grid {
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.grid table {
+  margin: auto;
 }
 .square {
+  cursor: pointer;
   display: inline-block;
-  outline: 2px groove #595959;
   height: 50px;
   width: 50px;
   text-align: center;
-  transition: background 2.5s;
+  transition: background 2s;
 }
 .colorText {
   color: ;
@@ -83,4 +105,17 @@ body {
 }
 .square:hover .colorText{
   visibility: visible;
+}
+footer, #app:after {
+  height: 180px;
+}
+footer {
+  background-color: #1c1c1c;
+  color: #CCC;
+  font-size: 14px;
+  text-align: center;
+}
+footer div {
+  line-height: 180px;
+  vertical-align: middle;
 }

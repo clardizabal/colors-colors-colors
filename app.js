@@ -57,13 +57,14 @@ const TableRow = () => (
 
 const Header = () => (
   <div id='header'>
-    <div id='title'>Colors, colors, colors...</div>
+    <div id='title'>C o l o r s</div>
   </div>
 )
 
 const App = () => (
-    <div>
-      <Header/>
+  <div>
+    <Header/>
+    <div className='grid'>
       <table>
         <tbody>
           <TableRow/>
@@ -77,8 +78,9 @@ const App = () => (
           <TableRow/>
           <TableRow/>
         </tbody>
-     </table>
-   </div>
+      </table>
+    </div>
+  </div>
 );
 
 ReactDOM.render(<App />, document.getElementById('app'));
