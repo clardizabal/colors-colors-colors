@@ -82,7 +82,7 @@ const Header = () => (
 const Footer = () => (
   <footer>
     <div>
-      10 x 10, 50px by 50px squares. Click on a square and watch it transistion into another color. Built with
+      10 x 10, 50px by 50px squares. Click on a square and watch it transistion into another color. Built with&nbsp;
       <a href="https://facebook.github.io/react/">React.js</a>
     </div>
   </footer>
