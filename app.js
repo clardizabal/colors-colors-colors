@@ -1,4 +1,5 @@
 const colors = ['black', 'blue', 'cyan', 'green', 'magenta', 'red', 'yellow'];
+const title = 'C o l o r s'
 
 class Square extends React.Component {
   constructor(props) {
@@ -55,30 +56,43 @@ const TableRow = () => (
   </tr>
 );
 
+const Table = () => (
+  <table>
+    <tbody>
+      <TableRow/>
+      <TableRow/>
+      <TableRow/>
+      <TableRow/>
+      <TableRow/>
+      <TableRow/>
+      <TableRow/>
+      <TableRow/>
+      <TableRow/>
+      <TableRow/>
+    </tbody>
+  </table>
+);
+
 const Header = () => (
   <div id='header'>
-    <div id='title'>C o l o r s</div>
+    <div id='title'>{title}</div>
   </div>
-)
+);
+
+const Footer = () => (
+  <footer>
+    <div>
+      10 x 10, 50px by 50px squares. Click on a square and watch it transistion into another color. Built with
+      <a href="https://facebook.github.io/react/">React.js</a>
+    </div>
+  </footer>
+);
 
 const App = () => (
   <div>
     <Header/>
     <div className='grid'>
-      <table>
-        <tbody>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-          <TableRow/>
-        </tbody>
-      </table>
+      <Table/>
     </div>
   </div>
 );
