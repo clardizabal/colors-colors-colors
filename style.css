@@ -103,6 +103,7 @@ table {
 }
 footer {
   position: absolute;
+  display: table;
   bottom: 0;
   width: 100%;
   color: #CCC;
@@ -113,6 +114,7 @@ footer {
   background-color: #1c1c1c;
 }
 footer div {
-  line-height: 180px;
+  display: table-cell;
   vertical-align: middle;
+  text-align: center;
 }
