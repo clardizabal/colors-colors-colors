@@ -6,7 +6,7 @@ class Square extends React.Component {
     super(props);
 
     this.state = {
-      /* Generate a randome color from list of colors */
+      /* Generate a randome color from sequence of colors */
       color: colors[Math.floor(Math.random() * colors.length)],
     };
 
@@ -22,7 +22,7 @@ class Square extends React.Component {
   }
 
   render() {
-    /* Inline styling for Square and Text */
+    /* Inline dynamic style for Square and Text */
     const squareStyle = {
       background: this.state.color,
     }
@@ -91,9 +91,8 @@ const Footer = () => (
 const App = () => (
   <div>
     <Header/>
-    <div className='grid'>
-      <Table/>
-    </div>
+    <Table/>
+    <Footer/>
   </div>
 );
 

@@ -48,27 +48,23 @@ table {
 }
 /* END OF CSS RESET */
 
-html, body {
-  height: 100%;
+html {
+  position: relative;
+  min-height: 100%;
+  /*height: 100%;*/
 }
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #262626;
   min-width: 500px;
   min-height: 500px;
-}
-#app {
-  min-height: 100%;
-  /* margin bottom should be same size as footer */
-  margin-bottom: -180px;
-}
-#app:after {
-  content: "";
-  display: block;
+  /* Margin bottom by footer height */
+  margin-bottom: 180px;
 }
 #header {
   height: 60px;
   background: linear-gradient(#282828, #191919);
+  margin-bottom: 75px;
 }
 #title {
   color: #CCC;
@@ -79,11 +75,10 @@ body {
   vertical-align: middle;
   margin-left: 30px;
 }
-.grid {
-  margin-top: 75px;
-  margin-bottom: 75px;
+#app {
+  padding-bottom: 75px;
 }
-.grid table {
+table {
   margin: auto;
 }
 .square {
@@ -106,14 +101,16 @@ body {
 .square:hover .colorText{
   visibility: visible;
 }
-footer, #app:after {
-  height: 180px;
-}
 footer {
-  background-color: #1c1c1c;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   color: #CCC;
   font-size: 14px;
   text-align: center;
+  /* Set the fixed height of the footer here */
+  height: 180px;
+  background-color: #1c1c1c;
 }
 footer div {
   line-height: 180px;
