@@ -1,13 +1,14 @@
 const colors = ['black', 'blue', 'cyan', 'green', 'magenta', 'red', 'yellow'];
-const title = 'C o l o r s'
+const title = 'C o l o r s';
+const size = 10;
 
 class Square extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      /* Generate a randome color from sequence of colors */
-      color: colors[Math.floor(Math.random() * colors.length)],
+      /* Assign initial color to square */
+      color: colors[props.index]
     };
 
     this.changeColor = this.changeColor.bind(this);
@@ -39,39 +40,37 @@ class Square extends React.Component {
   }
 }
 
-const TableRow = () => (
+const TableRow = (props) => (
   <tr>
     <td>
-      <Square/>
-      <Square/>
-      <Square/>
-      <Square/>
-      <Square/>
-      <Square/>
-      <Square/>
-      <Square/>
-      <Square/>
-      <Square/>
+      {props.sequence.map(index =>
+        <Square index = {index}/>)}
     </td>
   </tr>
 );
 
-const Table = () => (
-  <table>
-    <tbody>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-    </tbody>
-  </table>
-);
+const Table = () => {
+  /* Initialize sequence by creating matrix with indices of color sequence */
+  const grid = [];
+  let index = 0;
+  for (let x = 0; x < size; x++) {
+    let row = [];
+    for (let y = 0; y < size; y++) {
+      row = row.concat(index);
+      index = ++index < colors.length ? index : 0;
+    }
+    grid.push(row);
+  }
+
+  return (
+    <table>
+      <tbody>
+      {grid.map(sequence =>
+        <TableRow sequence = {sequence}/>)}
+      </tbody>
+    </table>
+  );
+};
 
 const Header = () => (
   <div id='header'>
