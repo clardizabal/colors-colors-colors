@@ -4,6 +4,9 @@ React App that display a 10 x 10 grid of 50px x 50px squares of 7 different colo
 **Screenshot**
 ![alt tag](screenshots/colors-colors-colors.png)
 
+* [ ] Install `live-server` if you haven't yet: `npm install -g live-server`
+* [ ] Start the app by running `live-server .` from the root directory
+
 ## Owner
   - Chris Lardizabal
 
