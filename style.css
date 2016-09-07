@@ -83,6 +83,7 @@ table {
 .square {
   cursor: pointer;
   display: inline-block;
+  outline: dotted 1px white;
   height: 50px;
   width: 50px;
   text-align: center;

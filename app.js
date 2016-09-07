@@ -1,40 +1,31 @@
-const colors = ['black', 'blue', 'cyan', 'green', 'magenta', 'red', 'yellow'];
+const colors = ['black', 'yellow', 'cyan', 'green', 'magenta', 'red', 'yellow'];
 const title = 'C o l o r s';
-const size = 10;
+const size = 5;
 
 class Square extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      /* Assign initial color to square */
-      color: colors[props.index]
-    };
-
-    this.changeColor = this.changeColor.bind(this);
+    this.toggleLight = this.toggleLight.bind(this);
   }
 
-  changeColor() {
-    /* Find index of current color in sequence */
-    let index = colors.indexOf(this.state.color);
-    /* Get index of next color in seqequence and change state */
-    index = index < colors.length - 1 ? index + 1 : 0;
-    this.setState({color: colors[index]});
+  toggleLight() {
+    this.props.toggleLights(this.props.x, this.props.y);
   }
 
   render() {
     /* Inline dynamic style for Square and Text */
     const squareStyle = {
-      background: this.state.color,
+      background: colors[this.props.index],
     }
     const textStyle = {
-      color: (this.state.color === 'yellow' ||
-        this.state.color === 'cyan') ? 'black' : 'white',
+      color: (colors[this.props.index] === 'yellow' ||
+        colors[this.props.index] === 'cyan') ? 'black' : 'white',
     }
 
     return (
-      <div className="square" style={squareStyle} onClick={this.changeColor}>
-        <div className="colorText" style={textStyle}>{this.state.color}</div>
+      <div className="square" style={squareStyle} onClick={this.toggleLight}>
+        <div className="colorText" style={textStyle}>{colors[this.props.index]}</div>
       </div>
     );
   }
@@ -43,34 +34,68 @@ class Square extends React.Component {
 const TableRow = (props) => (
   <tr>
     <td>
-      {props.sequence.map(index =>
-        <Square index = {index}/>)}
+      {props.sequence.map((index, y) =>
+        <Square index={index} x={props.x} y={y} toggleLights={props.toggleLights}/>)}
     </td>
   </tr>
 );
 
-const Table = () => {
-  /* Initialize sequence by creating matrix with indices of color sequence */
-  const grid = [];
-  let index = 0;
-  for (let x = 0; x < size; x++) {
-    let row = [];
-    for (let y = 0; y < size; y++) {
-      row = row.concat(index);
-      index = ++index < colors.length ? index : 0;
-    }
-    grid.push(row);
+const makeEmptyMatrix = (n) => {
+  return _.range(n).map(() => {
+    return _.range(n).map(() => 0);
+  });
+
+};
+
+const generateRandomIndices = (board) => {
+  let randomRow = Math.floor(Math.random() * size);
+  let randomCol = Math.floor(Math.random() * size);
+  if (board[randomRow][randomCol]) {
+    generateRandomIndices(board);
+  } else {
+    board[randomRow][randomCol] = 1;
+  }
+};
+
+const grid = makeEmptyMatrix(size);
+const randomInteger = Math.floor(Math.random() * Math.pow(size, 2));
+for (let i = 0; i  < randomInteger; i++) {
+  generateRandomIndices(grid);
+}
+
+class Table extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {grid}
+    this.toggleLights = this.toggleLights.bind(this);
   }
 
-  return (
-    <table>
-      <tbody>
-      {grid.map(sequence =>
-        <TableRow sequence = {sequence}/>)}
-      </tbody>
-    </table>
-  );
-};
+  toggleLights(x, y) {
+    grid[x][y] = grid[x][y] ? 0 : 1;
+    // console.log(grid[x][y]);
+    for (let i = -1; i <= 1; i += 2) {
+      if (y + i < size && y + i >= 0) {
+        grid[x][y + i] = grid[x][y + i] ? 0 : 1;
+      }
+      if (x + i < size && x + i >= 0) {
+        grid[x + i][y] =  grid[x + i][y] ? 0 : 1;
+      }
+    }
+    this.setState({grid});
+  }
+
+  render() {
+    return (
+      <table>
+        <tbody>
+        {this.state.grid.map((sequence, index) =>
+          <TableRow sequence={sequence} x={index} toggleLights={this.toggleLights}/>)}
+        </tbody>
+      </table>
+    );
+  }
+}
 
 const Header = () => (
   <div id='header'>
